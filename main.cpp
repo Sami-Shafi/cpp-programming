@@ -1,9 +1,12 @@
 #include<iostream>
-#include<iomanip>
+#include<algorithm>
 using namespace std;
 int main()
 {
-    double num = 29.5231;
-    cout << fixed << setprecision(1) << num << endl;
+    int a,b, c = 9;
+    cin >> a >> b;
+    cout << min(a,b) << endl;
+    cout << max(a,b) << endl;
+    cout << min({a,b,c}) << endl;
     return 0;
 }
