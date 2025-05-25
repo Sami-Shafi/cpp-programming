@@ -1,9 +1,9 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 int main()
 {
-    int age;
-    cin >> age;
-    cout << "Hello Mother! I am " << age << endl;
+    double num = 29.5231;
+    cout << fixed << setprecision(1) << num << endl;
     return 0;
 }
