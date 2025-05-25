@@ -1,8 +1,9 @@
 #include<iostream>
+using namespace std;
 int main()
 {
-    int age = 20;
-    std::cout << "Hello Mother!" << std::endl;
-    std::cout << "I am " << age << std::endl;
+    int age;
+    cin >> age;
+    cout << "Hello Mother! I am " << age << endl;
     return 0;
 }
