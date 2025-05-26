@@ -1,13 +1,23 @@
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
+
+int* p;
+void fun()
+{
+    int* x = new int;
+    *x = 20;
+    p = x;
+    cout << "Fun -> " << *p << endl;
+}
+
 int main()
 {
-    int x;
-    cin >> x;
-    cin.ignore();
-    char s[100];
-    cin.getline(s, 100);
-    cout << x << endl << s << endl;
+    // int x = 10;
+    // int *p = new int;
+    // *p = 10;
+    // cout << *p << endl;
+
+    fun();
+    cout << "Main -> " << *p << endl;
     return 0;
-}
+} 

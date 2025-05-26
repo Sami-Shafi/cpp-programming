@@ -1,2 +1,2 @@
-232
-Hey Mama
+Fun -> 20
+Main -> 20
