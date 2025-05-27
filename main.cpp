@@ -1,41 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Given a number N and an array A of N numbers. Print the array in a reversed order.
-
-// Note:
-
-// Don't use built-in-functions.
+// Given a number N, and N numbers, find maximum number in these N numbers.
 
 // Input
-// First line contains a number N (1 ≤ N ≤ 103) number of elements.
+// First line contains a number N (1 ≤ N ≤ 103).
+// Second line contains N numbers Xi (0 ≤ Xi ≤ 109).
 
-// Second line contains N numbers (0 ≤ Ai ≤ 109).
+// Output
+// Print the maximum number.
 
 int main()
 {
-    int n;
+    int n, max = INT_MIN;
     cin >> n;
-
     int arr[n];
-
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
     
-    for (int i = 0, j = n-1; i < j; i++, j--)
-    {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << " ";
+        if (arr[i] > max) {
+            max = arr[i];
+        }
     }
+
+    cout << max;
     
-    
+
     return 0;
 } 
