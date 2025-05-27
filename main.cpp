@@ -1,36 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Given a letter X. Determine whether X is Digit or Alphabet and if it is Alphabet determine if it is Capital Case or Small Case.
+// Given two numbers X and Y. Print the summation and multiplication and subtraction of these 2 numbers.
 
-// Note:
-
-// Digits in ASCII '0' = 48,'1' = 49 ....etc
-// Capital letters in ASCII 'A' = 65, 'B' = 66 ....etc
-// Small letters in ASCII 'a' = 97,'b' = 98 ....etc
 // Input
-// Only one line containing a character X which will be a capital or small letter or digit.
+// Only one line containing two separated numbers X, Y (1  ≤  X, Y  ≤  105).
 
 // Output
-// Print a single line contains "IS DIGIT" if X is digit otherwise, print "ALPHA" in the first line followed by a new line that contains "IS CAPITAL" if X is a capital letter and "IS SMALL" if X is a small letter.
+// Print 3 lines that contain the following in the same order:
+
+// "X + Y = summation result" without quotes.
+// "X * Y = multiplication result" without quotes.
+// "X - Y = subtraction result" without quotes.
 
 int main()
 {
-    char x;
-    cin >> x;
+    int x, y;
+    cin >> x >> y;
 
-    if (int(x) >= 48 && int(x) <= 57) {
-        cout << "IS DIGIT";
-    }else {
-        
-        if (int(x) >= 97 && int(x) <= 122) {
-            cout << "ALPHA" << endl;
-            cout << "IS SMALL" << endl;
-        }else if(int(x) >= 65 && int(x) <= 90) {
-            cout << "ALPHA" << endl;
-            cout << "IS CAPITAL" << endl;
-        }
-    }
+    cout << "X + Y = " << x+y << endl;
+    cout << "X * Y = " << x*y << endl;
+    cout << "X - Y = " << abs(x-y);
     
     return 0;
 } 
