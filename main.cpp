@@ -1,34 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Given a number N, and N numbers, find maximum number in these N numbers.
-
-// Input
-// First line contains a number N (1 ≤ N ≤ 103).
-// Second line contains N numbers Xi (0 ≤ Xi ≤ 109).
-
-// Output
-// Print the maximum number.
+void checkMinMax(int* num, int* min, int* max) {
+    if (*num < *min) {
+        *min = *num;
+    }else if (*num > *max) {
+        *max = *num;
+    }
+}
 
 int main()
 {
-    int n, max = INT_MIN;
-    cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
+    int a, b, c, min, max;
+    cin >> a >> b >> c;
 
-    cout << max;
-    
+    min = a, max = a;
+    checkMinMax(&b, &min, &max);
+    checkMinMax(&c, &min, &max);
+
+    cout << min << " " << max;
 
     return 0;
 } 
