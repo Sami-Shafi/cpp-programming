@@ -15,12 +15,16 @@ class Student
     }
 };
 
-Student fun() {
-    Student person = Student(2,6,4.5);
+Student* objGenerator() {
+    Student* person = new Student(2, 6, 4.50);
     return person;
 }
 
-int main () {
-    Student Rahim = fun();
-    cout << Rahim.roll << " " << Rahim.cls << " " << Rahim.gpa << endl;
-}
+int main()
+{
+    Student* Rahim = objGenerator();
+
+    cout << Rahim->roll << " " << Rahim->cls << " " << Rahim->gpa << endl;
+
+    return 0;
+} 
