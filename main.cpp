@@ -15,16 +15,18 @@ class Student
     }
 };
 
-Student* objGenerator() {
-    Student* person = new Student(7, 6, 4.50);
-    return person;
-}
-
 int main()
 {
-    Student* Rahim = objGenerator();
-
-    cout << Rahim->roll << " " << Rahim->cls << " " << Rahim->gpa << endl;
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+    sort(arr, arr+n, greater<int>());
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 } 
