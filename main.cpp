@@ -16,7 +16,7 @@ class Student
 };
 
 Student* objGenerator() {
-    Student* person = new Student(2, 6, 4.50);
+    Student* person = new Student(7, 6, 4.50);
     return person;
 }
 
