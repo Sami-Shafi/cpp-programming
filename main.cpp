@@ -9,17 +9,18 @@ class Student
     double gpa;
 
     Student(int r, int c, double g) {
-        roll = r;
-        cls = c;
-        gpa = g;
+        this->roll = r;
+        this->cls = c;
+        this->gpa = g;
     }
 };
 
-int main()
-{
-    Student b(2, 7, 4.5);
+Student fun() {
+    Student person = Student(2,6,4.5);
+    return person;
+}
 
-    cout << b.cls << " " << b.roll << " " << b.gpa << endl;
-
-    return 0;
-} 
+int main () {
+    Student Rahim = fun();
+    cout << Rahim.roll << " " << Rahim.cls << " " << Rahim.gpa << endl;
+}
