@@ -1,24 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void checkMinMax(int* num, int* min, int* max) {
-    if (*num < *min) {
-        *min = *num;
-    }else if (*num > *max) {
-        *max = *num;
-    }
-}
+class Student
+{
+    public:
+    char name[100];
+    int roll;
+    double gpa;
+};
 
 int main()
 {
-    int a, b, c, min, max;
-    cin >> a >> b >> c;
-
-    min = a, max = a;
-    checkMinMax(&b, &min, &max);
-    checkMinMax(&c, &min, &max);
-
-    cout << min << " " << max;
+    Student a, b;
+    cin >> a.name >> a.roll >> a.gpa;
+    cin >> b.name >> b.roll >> b.gpa;
+    
+    cout << a.name << " " << a.roll << " " << a.gpa << endl;
+    cout << b.name << " " << b.roll << " " << b.gpa << endl;
 
     return 0;
 } 
