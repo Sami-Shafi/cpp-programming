@@ -1,52 +1,56 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Problem Statement
+// Problem Statement:
 
-// You will be given an array A and the size of that array N. You need to create a function named sort_it(). After taking the input for the size in main function, call that function by giving the size as parameter and take the array input inside that function. After that, you need to sort the array in descending order. Then, return that array from the function and receive it in the main function. Finally, print the sorted array in the main function.
+// Amena has just learned alphabets. She can read write from a to z only in lowercase. But, Amena always writes in alphabetic order (alphabetic order means from a to z in sorted order) what she saw. Also she writes a line as a word. For example, she writes monkey as ekmnoy. Her mother wants to test her reading and writing skills. Her mother gave her some lines, can you tell what she will write?
+
+// Note: Input will be given by EOF.
 
 // Input Format
 
-// First line will contain N.
-// Second line will contain the array A.
+// Input consist of a line S. The line will contain lowercase letters and spaces. It is possible that there are multiple spaces together and the line end with spaces.
 // Constraints
 
-// 1 <= N <= 10^5
-// -10^9 <= A[i] <= 10^9 Where 0 <= i < N
+// 1 <= |S| <= 10^5
 // Output Format
 
-// Ouptut the array in descending order.
+// Output what Amena will write.
 // Sample Input 0
 
-// 5
-// 1 4 2 3 5
+// monkey
+// i love flower
 // Sample Output 0
 
-// 5 4 3 2 1
-
-int* sort_it(int n) {
-    int* arr = new int[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    sort(arr, arr+n, greater<int>());
-
-    return arr;
-}
+// ekmnoy
+// eefilloorvw
 
 int main()
 {
-    int n;
-    cin >> n;
-    int* arr = sort_it(n);
+    int size = 100001;
+    char line[size];
+    while(cin.getline(line, size)) {
+        int length = strlen(line);
+        char nl[length];
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
+        for (int i = 0; i < length; i++)
+        {
+            nl[i] = line[i];
+        }
+
+        sort(nl, nl+length);
+
+        for (int i = 0; i < length; i++)
+        {
+            if(int(nl[i]) == 32) {
+                continue;
+            }
+            cout << (char)nl[i];
+        }
+
+        cout << endl;
+        
     }
-
-    delete[] arr;
 
     return 0;
 } 
