@@ -3,53 +3,50 @@ using namespace std;
 
 // Problem Statement
 
-// You will be given an array A of size N. Initially, you need to print the array by sorting it in ascending order. Afterward, you need to print the array sorted in descending order.
+// You will be given an array A and the size of that array N. You need to create a function named sort_it(). After taking the input for the size in main function, call that function by giving the size as parameter and take the array input inside that function. After that, you need to sort the array in descending order. Then, return that array from the function and receive it in the main function. Finally, print the sorted array in the main function.
 
 // Input Format
 
 // First line will contain N.
-// Next line will contain the array A.
+// Second line will contain the array A.
 // Constraints
 
 // 1 <= N <= 10^5
 // -10^9 <= A[i] <= 10^9 Where 0 <= i < N
 // Output Format
 
-// Print two lines. First line will contain the array sorted in ascending order. Next line will contain the array sorted in descending order.
+// Ouptut the array in descending order.
 // Sample Input 0
 
 // 5
-// 2 4 6 1 3
+// 1 4 2 3 5
 // Sample Output 0
 
-// 1 2 3 4 6
-// 6 4 3 2 1
+// 5 4 3 2 1
 
-void printArr(int arr[], int n) {
+int* sort_it(int n) {
+    int* arr = new int[n];
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << " ";
+        cin >> arr[i];
     }
-    cout << endl;
+    sort(arr, arr+n, greater<int>());
+
+    return arr;
 }
 
 int main()
 {
     int n;
     cin >> n;
-    int asc[n], desc[n], val;
+    int* arr = sort_it(n);
+
     for (int i = 0; i < n; i++)
     {
-        cin >> val;
-        asc[i] = val;
-        desc[i] = val;
+        cout << arr[i] << " ";
     }
 
-    sort(asc, asc+n);
-    sort(desc, desc+n, greater<int>());
-
-    printArr(asc, n);
-    printArr(desc, n);
+    delete[] arr;
 
     return 0;
 } 
