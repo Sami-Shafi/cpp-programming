@@ -3,39 +3,47 @@ using namespace std;
 
 // Problem Statement
 
-// A student has several pieces of information, such as a unique ID, name, section, and total marks. You will be given the information of three students. Your task is to determine and print the details of the student who achieved the highest total marks. In the case of a tie (i.e., two or more students having the same total marks), print the information of the student with the smaller ID.
+// You will be given an array A and the size of that array N. Additionally, you will be given a sum S. Your task is to determine whether it is possible to select three distinct indexed values from the array such that their summation equals S.
 
 // Input Format
 
 // First line will contain T, the number of test cases.
-// For each test case there will be 3 lines. Each line will contain - ID, Name, Section, Total Marks of a student. The name will contain lowercase English alphabets only.
+// First line of each test case will contain N and S.
+// Second line of each test case will contain the array A.
 // Constraints
 
-// 1 <= T <= 1000
-// 1 <= ID <= 3
-// 1 <= |Name| <= 100
-// 'A' <= Section <= 'Z'
-// 0 <= Total Marks <= 100
+// 1 <= T <= 100
+// 1 <= N <= 100
+// 1 <= S <= 1000
+// 1 <= A[i] <= 1000 Where 0 <= i < N
 // Output Format
 
-// Ouptut the information as asked in the question.
+// Output "YES" if it is possible, otherwise output "NO".
 // Sample Input 0
 
-// 3
-// 1 sakib A 50
-// 2 rakib D 96
-// 3 akib C 90
-// 1 sakib A 50
-// 2 rakib D 96
-// 3 akib C 96
-// 1 sakib A 50
-// 2 rakib D 50
-// 3 akib C 40
+// 5
+// 5 10
+// 1 2 3 4 5
+// 5 6
+// 4 2 3 5 4
+// 3 6
+// 2 2 2
+// 4 4
+// 2 8 1 5
+// 1 3
+// 1
 // Sample Output 0
 
-// 2 rakib D 96
-// 2 rakib D 96
-// 1 sakib A 50
+// YES
+// NO
+// YES
+// NO
+// NO
+// Explanation 0
+
+// In the first test case, we can make 10 by adding 5+4+1. There are other ways too.
+// In the second test case, it is not possible to make 6 by adding three different indexed values from the array.
+// In the third case, it is possible to make 6 by using three different indexed values.
 
 int main()
 {
@@ -44,86 +52,38 @@ int main()
 
     while(t--) {
 
-        int n = 3;
-        int idMarks[3][2];
-        char names[3][1001], sections[n];
+        int size, sum;
+        bool isMatch = false;
+        cin >> size >> sum;
+        int arr[size];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < size; i++)
         {
-            cin >> idMarks[i][0] >> names[i] >> sections[i] >> idMarks[i][1];
+            cin >> arr[i];
         }
 
-        int mark1 = idMarks[0][1];
-        int mark2 = idMarks[1][1];
-        int mark3 = idMarks[2][1];
-        int id1 = idMarks[0][0];
-        int id2 = idMarks[1][0];
-        int id3 = idMarks[2][0];
-
-        int maxVal = max({idMarks[0][1], idMarks[1][1], idMarks[2][1]});
-
-        int targetId, targetMark;
-        char targetName[1001], targetSection;
-
-        int targetLevel = 3;
-
-        if (mark1 == maxVal && mark2 == maxVal && mark3 == maxVal) {
-            if (id1 < id2) {
-                if (id1 < id3) {
-                    targetLevel = 1;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = i+1; j < size; j++)
+            {
+                for (int k = j+1; k < size; k++)
+                {
+                    if (arr[i] + arr[j] + arr[k] == sum) {
+                        isMatch = true;
+                        break;
+                    }
                 }
-            }else if (id2 < id3) {
-                targetLevel = 2;
-
+                
             }
         }
-        else if (mark1==maxVal && mark2==maxVal) {
-            if (id1 < id2) {
-                targetLevel = 1;
 
-            }else {
-                targetLevel = 2;
-            }
-        }
-        else if (mark1==maxVal && mark3==maxVal) {
-            if (id1 < id3) {
-                targetLevel = 1;
-
-            }
-        }
-        else if (mark2==maxVal && mark3==maxVal) {
-            if (id2 < id3) {
-                targetLevel = 2;
-
-            }
-        }
-        else if (mark1==maxVal) {
-            targetLevel = 1;
-
-        }
-        else if (mark2==maxVal) {
-            targetLevel = 2;
-        }
-
-        if (targetLevel==1) {
-            targetId = id1;
-            targetMark = mark1;
-            strcpy(targetName, names[0]);
-            targetSection = sections[0];
-        }else if (targetLevel == 2) {
-            targetId = id2;
-            targetMark = mark2;
-            strcpy(targetName, names[1]);
-            targetSection = sections[1];
+        if(isMatch == true) {
+            cout << "YES";
         }else {
-            targetId = id3;
-            targetMark = mark3;
-            strcpy(targetName, names[2]);
-            targetSection = sections[2];
+            cout << "NO";
         }
-
-        cout << targetId << " " << targetName << " " << targetSection << " " << targetMark << endl;
-
+        cout << endl;
+        
     }
 
     return 0;
