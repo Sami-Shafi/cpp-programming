@@ -3,20 +3,20 @@ using namespace std;
 
 int main()
 {
-    string text;
-    getline(cin, text);
-    stringstream strm(text);
+    // 1
+    // string s("Hello");
     
-    string word;
-    int count = 0;
+    // 2
+    // string s("Hello World", 5);
+    
+    // 3
+    string s = "Hello World";
+    string t(s, 5);
 
-    while (strm >> word)
-    {
-        cout << word << endl;
-        count++;
-    }
+    // cout << s;
 
-    cout << count;
+    // output 3
+    // cout << t;
 
     return 0;
 } 
