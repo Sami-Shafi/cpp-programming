@@ -3,11 +3,12 @@ using namespace std;
 
 int main()
 {
-    string text = "Hello Sister";
+    string text;
     
-    for (auto it = text.begin(); it < text.end(); it++) {
-        cout << *it;
-    }
+    // ! Caution: getline will create problems if you have any enters before the line. in that case, use 
+    // ! cin.ignore() before the getline()
+    getline(cin, text);
+    cout << text << endl;
 
     return 0;
 } 
