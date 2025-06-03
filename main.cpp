@@ -4,11 +4,19 @@ using namespace std;
 int main()
 {
     string text;
-    
-    // ! Caution: getline will create problems if you have any enters before the line. in that case, use 
-    // ! cin.ignore() before the getline()
     getline(cin, text);
-    cout << text << endl;
+    stringstream strm(text);
+    
+    string word;
+    int count = 0;
+
+    while (strm >> word)
+    {
+        cout << word << endl;
+        count++;
+    }
+
+    cout << count;
 
     return 0;
 } 
