@@ -1,33 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Citizen {
+class Fruit {
     public:
-    string name, blood;
-    int age;
-    bool marriageStatus;
+    int price;
+    bool isRipe;
 
-    Citizen(string name, int age, string blood, bool marriageStatus) {
-        this->name = name;
-        this->age = age;
-        this->blood = blood;
-        this->marriageStatus = marriageStatus;
-    }
-
-    void intro() {
-        cout << "My name is " << name << ". I am " << age << " and I'm happily " << ((marriageStatus) ? "married" : "single") << ". My blood group is " << blood << "." << endl << endl;
+    Fruit(int price, bool isRipe) {
+        this->price = price;
+        this->isRipe = isRipe;
     }
 };
 
 int main()
 {
-    Citizen Dinan("Medri Ferdinand", 38, "O+", true);
-    Citizen Nep("Nepoleon Enzo", 25, "AB+", false);
-    Citizen Trudo("Justin Trudo", 46, "A+", true);
 
-    Dinan.intro();
-    Nep.intro();
-    Trudo.intro();
+    Fruit* mango = new Fruit(45, true);
+    Fruit* banana = new Fruit(25, false);
+    *banana = *mango;
+
+    delete mango;
+
+    // When you have 2 dynamic objects and if you delete the one you copy from, the newer object will give error cause they are basically pointers. so use * or manually copy all fields.
+
+    // cout << "Mango:" << endl << "BDT " << mango->price << "; Ripe: " << ((mango->isRipe)? "Yes" : "No") << "." << endl;
+
+    cout << "Banana:" << endl << "BDT " << banana->price << "; Ripe: " << ((banana->isRipe)? "Yes" : "No") << "." << endl;
 
     return 0;
 } 
