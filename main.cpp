@@ -6,9 +6,9 @@ int main()
     string text;
     cin >> text;
 
-    sort(text.begin(), text.end());
-
-    cout << text << endl;
+    for (char c : text) {
+        cout << c;
+    }
 
     return 0;
 } 
