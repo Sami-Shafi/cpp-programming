@@ -3,20 +3,12 @@ using namespace std;
 
 int main()
 {
-    // 1
-    // string s("Hello");
-    
-    // 2
-    // string s("Hello World", 5);
-    
-    // 3
-    string s = "Hello World";
-    string t(s, 5);
+    string text;
+    cin >> text;
 
-    // cout << s;
+    sort(text.begin(), text.end());
 
-    // output 3
-    // cout << t;
+    cout << text << endl;
 
     return 0;
 } 
