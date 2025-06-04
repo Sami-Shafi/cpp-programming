@@ -3,12 +3,19 @@ using namespace std;
 
 int main()
 {
-    string text;
-    cin >> text;
-
-    for (char c : text) {
-        cout << c;
+    int nums[5];
+    
+    for (int i = 0; i < 5; i++) {
+        cin >> nums[i];
     }
+
+    reverse(nums, nums+5);
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << nums[i] << " ";
+    }
+    
 
     return 0;
 } 
