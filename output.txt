@@ -1,4 +1,5 @@
-Mango:
-BDT 15804368; Ripe: No.
-Banana:
-BDT 45; Ripe: Yes.
+YES
+NO
+YES
+YES
+NO
