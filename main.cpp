@@ -9,11 +9,7 @@ class Student {
 };
 
 bool sorter(Student prev, Student next) {
-    if(prev.roll < next.roll) {
-        return true;
-    }else {
-        return false;
-    }
+    return prev.roll <= next.roll;
 }
 
 int main()
