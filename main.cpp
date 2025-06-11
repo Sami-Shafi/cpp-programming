@@ -8,6 +8,14 @@ class Student {
     int marks;
 };
 
+bool sorter(Student prev, Student next) {
+    if(prev.roll < next.roll) {
+        return true;
+    }else {
+        return false;
+    }
+}
+
 int main()
 {
     int n;
@@ -20,6 +28,8 @@ int main()
         getline(cin, arr[i].name);
         cin >> arr[i].roll >> arr[i].marks;
     }
+
+    sort(arr, arr+n, sorter);
 
     for (int i = 0; i < n; i++)
     {
