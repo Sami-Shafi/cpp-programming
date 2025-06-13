@@ -1,59 +1,80 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// You will be given data for N students, where each student will have a name (nm), class (cls), section (s) and student ID (id). The Headmaster decided to change the sections of the students. He wants to reverse their sections. Now he needs your help to do so.
+// You will be given data for N students, where each student will have a name (nm), class (cls), section (s), student ID (id), math marks (math_marks), and English marks (eng_marks).
 
-// Your task is reverse their section and print all the students data. That means the section of the first student will be replaced by the section of the last student, the section of the second student will be replaced by the section of the second last student and so on. See the sample input and output for more clarifications.
+// Your task is to sort the students data according to the total marks (sum of math_marks and eng_marks) in descending order. If multiple student have the same total marks then sort them according to the id in ascending order as the id will be unique.
 
 // Input Format
 // First line will contain N.
-// Next N lines will contain nm, cls, s, and id respectively.
+// Next N lines will contain nm, cls, s, id, math_marks and eng_marks respectively.
 
 // Constraints
 // 1 <= N <= 100
 // 1 <= |nm| <= 100 and will contain only English alphabets.
 // 1 <= cls <= 10
 // 'A' <= s <= 'Z'
-// 1 <= id <= 100
+// 1 <= id <= 1000
+// 0 <= math_marks, eng_marks <= 100
 
 // Output Format
-// Output all the students data after reversing their section
+// Output the students data in descending order according to the total marks.
 
 // Sample Input 0
-// 3
-// Rakib 7 B 90
-// Sakib 10 A 85
-// Ahsan 9 C 36
+// 5
+// Munna 8 D 25 50 30
+// Shojoy 9 E 26 40 50
+// Asif 10 C 27 55 60
+// Joy 9 G 28 66 45
+// Bijoy 7 E 29 68 99
 
 // Sample Output 0
-// Rakib 7 C 90
-// Sakib 10 A 85
-// Ahsan 9 B 36
+// Bijoy 7 E 29 68 99
+// Asif 10 C 27 55 60
+// Joy 9 G 28 66 45
+// Shojoy 9 E 26 40 50
+// Munna 8 D 25 50 30
 
 // Sample Input 1
-// 4
-// Munna 8 D 10
-// Shojoy 9 E 11
-// Asif 10 C 12
-// Joy 9 G 13
+// 6
+// Munna 8 D 30 50 40
+// Shojoy 9 E 25 40 50
+// Asif 10 C 27 55 60
+// Joy 9 G 28 66 45
+// Bijoy 7 E 29 68 99
+// Khadija 8 E 26 40 50
 
 // Sample Output 1
-// Munna 8 G 10
-// Shojoy 9 C 11
-// Asif 10 E 12
-// Joy 9 D 13
+// Bijoy 7 E 29 68 99
+// Asif 10 C 27 55 60
+// Joy 9 G 28 66 45
+// Shojoy 9 E 25 40 50
+// Khadija 8 E 26 40 50
+// Munna 8 D 30 50 40
 
 class Student {
     public:
     string name;
-    int cls;
     char section;
-    int id;
+    int cls, id, mm, em;
 
     void printStudent() {
-        cout << this->name << " " << this->cls << " " << this->section << " " << this->id << endl;
+        cout << this->name << " " << this->cls << " " << this->section << " " << this->id << " " << this->mm << " " << this->em << endl;
     }
 };
+
+bool studentSorting (Student prevStudent, Student nextStudent) {
+    int prevMarks = prevStudent.mm + prevStudent.em;
+    int nextMarks = nextStudent.mm + nextStudent.em;
+
+    return (prevMarks < nextMarks)
+    ? false :
+    (prevMarks == nextMarks) ?
+    (
+        (prevStudent.id > nextStudent.id) ? false : true
+    )
+    : true;
+}
 
 int main()
 {
@@ -63,13 +84,11 @@ int main()
 
     for (int i = 0; i < t; i++)
     {
-        cin >> students[i].name >> students[i].cls >> students[i].section >> students[i].id;
+
+        cin >> students[i].name >> students[i].cls >> students[i].section >> students[i].id >> students[i].mm >> students[i].em;
     }
     
-    for (int i = 0, j = t-1; i < j; i++, j--)
-    {
-        swap(students[i].section, students[j].section);
-    }
+    sort(students, students+t, studentSorting);
 
     for (int i = 0; i < t; i++)
     {
