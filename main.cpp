@@ -1,59 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// You will be given two strings S and X. You need to replace all X from string S with a '#' sign.
+// Write a program to determine if a given string contains the word "Jessica." If the word is present in the string, the program should output "YES," otherwise it should output "NO."
+
+// NOTE: You need to find only "Jessica"; not "jessica" or "JeSsica" or any other form. Words are separated by spaces.
 
 // Input Format
-
-// First line will contain T, the number of test cases.
-// Next T lines will contain a line with S and X.
+// Input will contain a string S containing names. There is a space in between two names.
 // Constraints
+// 1 <= |S| <= 1000; Here |S| means the length of the string.
 
-// 1 <= T <= 1000
-// 1 <= |S|, |X| <= 1000
-// |X| <= |S|
 // Output Format
-
-// For each test cases output the modified string S.
+// Output YES or NO according to the question.
 
 // Sample Input 0
-// 2
-// rahimisagoodguy good
-// canyoutellmewhereicanfindheriwillbegreatefultoyouifyoutellmetheanswer you
+// Rahat Rifat Sakib Asif Sifat Jessica Ratul Munna
 
 // Sample Output 0
-// rahimisa#guy
-// can#tellmewhereicanfindheriwillbegreatefulto#if#tellmetheanswer
+// YES
+
+// Sample Input 1
+// Rahat Rifat Sakib Asif Sifat Ratul Munna
+
+// Sample Output 1
+// NO
 
 int main()
 {
-    int t;
-    cin >> t;
+    string first;
+    bool hasMatched = false;
 
-    while (t) {
-        string first;
-        string target;
-        cin >> first >> target;
+    getline(cin, first);
 
-        for (int i = 0; i < first.size(); i++){
-            if (first[i] == target[0]){
-                string potential;
-                for (int c = 0; c < target.size(); c++)
-                {
-                    potential += first[i+c];
-                }
-                if(potential != target) {
-                    continue;
-                }
-                first.erase(i, target.size());
-                first.insert(first.begin() + i, '#');
-            }
+    stringstream line(first);
+    string word;
+    while(line >> word) {
+        if (word == "Jessica") {
+            hasMatched = true;
+            break;
         }
-
-        cout << first << endl;
-       
-        t--;
     }
+
+    cout << (hasMatched ? "YES" : "NO");
 
     return 0;
 } 
