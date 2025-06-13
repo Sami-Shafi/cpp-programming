@@ -1,43 +1,59 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Given a number N and a character C. Print the character(C) N times.
+// You will be given two strings S and X. You need to replace all X from string S with a '#' sign.
 
-// Note: Solve this problem using function.
+// Input Format
 
-// Input
-// The first line contains a number T (1≤T≤50) the number of test cases.
+// First line will contain T, the number of test cases.
+// Next T lines will contain a line with S and X.
+// Constraints
 
-// Next T lines contains a number N and a character C (1≤N≤100).
+// 1 <= T <= 1000
+// 1 <= |S|, |X| <= 1000
+// |X| <= |S|
+// Output Format
 
-// Output
-// Print T lines, for every line print the character(C) N times separated by space.
+// For each test cases output the modified string S.
 
-void charPrinter(int n, char c) {
-    cout << c;
-    for (int i = 0 ; i < n-1; i++)
-    {
-        cout << " " << c;
-    }
-    cout << endl;
-}
+// Sample Input 0
+// 2
+// rahimisagoodguy good
+// canyoutellmewhereicanfindheriwillbegreatefultoyouifyoutellmetheanswer you
+
+// Sample Output 0
+// rahimisa#guy
+// can#tellmewhereicanfindheriwillbegreatefulto#if#tellmetheanswer
 
 int main()
 {
     int t;
     cin >> t;
 
-    while (t)
-    {
-        int n;
-        char c;
-        cin >> n >> c;
+    while (t) {
+        string first;
+        string target;
+        cin >> first >> target;
 
-        charPrinter(n, c);
+        for (int i = 0; i < first.size(); i++){
+            if (first[i] == target[0]){
+                string potential;
+                for (int c = 0; c < target.size(); c++)
+                {
+                    potential += first[i+c];
+                }
+                if(potential != target) {
+                    continue;
+                }
+                first.erase(i, target.size());
+                first.insert(first.begin() + i, '#');
+            }
+        }
 
+        cout << first << endl;
+       
         t--;
     }
-    
 
     return 0;
 } 
