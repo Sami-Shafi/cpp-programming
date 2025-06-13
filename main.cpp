@@ -1,47 +1,81 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Write a program to determine if a given string contains the word "Jessica." If the word is present in the string, the program should output "YES," otherwise it should output "NO."
+// You will be given data for N students, where each student will have a name (nm), class (cls), section (s) and student ID (id). The Headmaster decided to change the sections of the students. He wants to reverse their sections. Now he needs your help to do so.
 
-// NOTE: You need to find only "Jessica"; not "jessica" or "JeSsica" or any other form. Words are separated by spaces.
+// Your task is reverse their section and print all the students data. That means the section of the first student will be replaced by the section of the last student, the section of the second student will be replaced by the section of the second last student and so on. See the sample input and output for more clarifications.
 
 // Input Format
-// Input will contain a string S containing names. There is a space in between two names.
+// First line will contain N.
+// Next N lines will contain nm, cls, s, and id respectively.
+
 // Constraints
-// 1 <= |S| <= 1000; Here |S| means the length of the string.
+// 1 <= N <= 100
+// 1 <= |nm| <= 100 and will contain only English alphabets.
+// 1 <= cls <= 10
+// 'A' <= s <= 'Z'
+// 1 <= id <= 100
 
 // Output Format
-// Output YES or NO according to the question.
+// Output all the students data after reversing their section
 
 // Sample Input 0
-// Rahat Rifat Sakib Asif Sifat Jessica Ratul Munna
+// 3
+// Rakib 7 B 90
+// Sakib 10 A 85
+// Ahsan 9 C 36
 
 // Sample Output 0
-// YES
+// Rakib 7 C 90
+// Sakib 10 A 85
+// Ahsan 9 B 36
 
 // Sample Input 1
-// Rahat Rifat Sakib Asif Sifat Ratul Munna
+// 4
+// Munna 8 D 10
+// Shojoy 9 E 11
+// Asif 10 C 12
+// Joy 9 G 13
 
 // Sample Output 1
-// NO
+// Munna 8 G 10
+// Shojoy 9 C 11
+// Asif 10 E 12
+// Joy 9 D 13
+
+class Student {
+    public:
+    string name;
+    int cls;
+    char section;
+    int id;
+
+    void printStudent() {
+        cout << this->name << " " << this->cls << " " << this->section << " " << this->id << endl;
+    }
+};
 
 int main()
 {
-    string first;
-    bool hasMatched = false;
+    int t;
+    cin >> t;
+    Student students[t];
 
-    getline(cin, first);
-
-    stringstream line(first);
-    string word;
-    while(line >> word) {
-        if (word == "Jessica") {
-            hasMatched = true;
-            break;
-        }
+    for (int i = 0; i < t; i++)
+    {
+        cin >> students[i].name >> students[i].cls >> students[i].section >> students[i].id;
+    }
+    
+    for (int i = 0, j = t-1; i < j; i++, j--)
+    {
+        swap(students[i].section, students[j].section);
     }
 
-    cout << (hasMatched ? "YES" : "NO");
-
+    for (int i = 0; i < t; i++)
+    {
+        students[i].printStudent();
+    }
+        
+        
     return 0;
 } 
